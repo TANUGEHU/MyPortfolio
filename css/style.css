@@ -83,7 +83,7 @@ section {
 }
 
 .video-container {
-  width: 100%;
+  width: 50%;
   max-width: 450px;
   margin: 0;
   border-radius: 20px;
@@ -93,7 +93,7 @@ section {
 }
 
 .video-container video {
-  width: 100%;
+  width: 60%;
   height: auto;
   display: block;
   border-radius: 20px;
@@ -309,6 +309,8 @@ footer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
   padding: 1rem;
 }
 
@@ -380,7 +382,7 @@ nav ul li a.active {
   border-radius: 30px;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 0, 139, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
 }
 
 .view-videos-btn {
@@ -404,44 +406,51 @@ nav ul li a.active {
 }
 
 .video-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   width: 100%;
+  padding: 20px;
+  flex-wrap: nowrap;
 }
 
 .video-item {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
+  flex: 0 0 300px;
+  padding: 15px;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.video-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(0, 0, 139, 0.4);
-  animation: glow 3s infinite;
+.video-container {
+  width: 100%;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
 .video-item h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #2c3e50;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
   text-shadow: none;
   transition: all 0.3s ease;
-}
-
-.video-item:hover h2 {
-  text-shadow: 0 0 15px rgba(0, 0, 139, 0.3);
-  animation: textGlow 3s infinite;
-}
-
-@media (max-width: 768px) {
-  .video-gallery {
-    grid-template-columns: 1fr;
-  }
+  width: 100%;
 }
 
 .lab-activities, .lab-outcomes {
@@ -488,74 +497,43 @@ nav ul li a.active {
   margin-bottom: 1.5rem;
 }
 
+#peselab-summary .section-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  margin-top: 1rem;
+  min-height: 200px;
+  border: 3px solid rgba(135, 206, 250, 0.5);
+}
+
+.lab-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
 .lab-subsection {
   background: rgba(255, 255, 255, 0.9);
   padding: 2rem;
-  margin: 0;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
   transition: all 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.lab-subsection:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(135, 206, 250, 0.4);
-  animation: glow 3s infinite;
-}
-
-.lab-subsection h2 {
-  color: #2c3e50;
-  margin-bottom: 1.2rem;
-  font-size: 1.8rem;
-  text-shadow: 0 0 15px rgba(135, 206, 250, 0.3);
-}
-
-.lab-subsection p {
-  line-height: 1.8;
-  color: #34495e;
-  margin-bottom: 1rem;
-  flex-grow: 1;
-}
-
-.lab-activities, .lab-outcomes, .lab-methodology, .lab-expectations {
-  list-style-type: none;
-  padding: 0;
-  margin: 1rem 0;
-  flex-grow: 1;
-}
-
-.lab-activities li, .lab-outcomes li, .lab-methodology li, .lab-expectations li {
-  margin: 0.8rem 0;
-  padding: 0.8rem 1.2rem;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.lab-activities li:hover, .lab-outcomes li:hover, .lab-methodology li:hover, .lab-expectations li:hover {
-  transform: translateX(10px);
-  box-shadow: 0 0 20px rgba(135, 206, 250, 0.4);
-}
-
-.lab-activities li strong, .lab-methodology li strong {
-  color: #4a90e2;
-  margin-right: 0.5rem;
-}
-
-#peselab-summary .section-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-@media (max-width: 1200px) {
-  .lab-content {
-    grid-template-columns: 1fr;
-  }
 }
 
 .key-learning {
@@ -603,4 +581,307 @@ nav ul li a.active {
 .learning-points li strong {
   color: #4a90e2;
   margin-right: 0.5rem;
+}
+
+/* Center align Contact section */
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem 1rem 2rem 1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  padding: 1rem 2rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #0056b3;
+}
+
+/* Center align video gallery */
+.video-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.video-item {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.video-container {
+  width: 100%;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+#peselab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+}
+
+#peselab .section-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  margin-top: 1rem;
+  min-height: 200px;
+  border: 3px solid rgba(135, 206, 250, 0.5);
+}
+
+#peselab .section-content:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px rgba(0, 0, 139, 0.4),
+              0 10px 20px rgba(0, 0, 139, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  animation: glow 3s infinite;
+  border: 3px solid rgba(135, 206, 250, 0.8);
+}
+
+#peselab .lab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#peselab .lab-content h2 {
+  color: #2c3e50;
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+#peselab .lab-content p {
+  line-height: 1.8;
+  color: #34495e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#peselab .view-lab {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
+  text-align: center;
+}
+
+/* Center Lab 5 section */
+.lab-subsection:nth-child(5) {
+  grid-column: 1 / -1;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(135, 206, 250, 0.3);
+}
+
+.lab-subsection:nth-child(5) h2,
+.lab-subsection:nth-child(5) p,
+.lab-subsection:nth-child(5) h3,
+.lab-subsection:nth-child(5) .learning-points {
+  text-align: center;
+}
+
+.lab-subsection:nth-child(5) .learning-points li {
+  display: inline-block;
+  margin: 0.5rem;
+  text-align: left;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+.social-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid rgba(135, 206, 250, 0.5);
+  transition: all 0.3s ease;
+}
+
+.social-image:hover {
+  transform: scale(1.05);
+  border: 3px solid rgba(135, 206, 250, 0.8);
+  box-shadow: 0 0 30px rgba(0, 0, 139, 0.4);
+}
+
+.social-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
+  transition: all 0.3s ease;
+  min-width: 200px;
+  flex: 1;
+  max-width: 300px;
+}
+
+.social-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 0, 139, 0.4);
+  animation: glow 3s infinite;
+}
+
+.social-section h3 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
+  width: 100%;
+  justify-content: center;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 0, 139, 0.4);
+  background: linear-gradient(135deg, #357abd, #4a90e2);
+  animation: glow 3s infinite;
+}
+
+.social-link i {
+  font-size: 1.5rem;
+}
+
+/* Resume Section Styles */
+#resume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 2rem 1rem 4rem 1rem;
+}
+
+.resume-buttons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.resume-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 139, 0.1);
+}
+
+.resume-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 0, 139, 0.4);
+  background: linear-gradient(135deg, #357abd, #4a90e2);
+  animation: glow 3s infinite;
+}
+
+.resume-btn i {
+  font-size: 1.8rem;
 }
