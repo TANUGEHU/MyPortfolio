@@ -29,6 +29,8 @@ body {
   border-image: linear-gradient(135deg, #4a90e2, #357abd) 1;
   box-shadow: 0 0 20px rgba(135, 206, 250, 0.6);
   animation: glow 3s infinite;
+  /* Make room for the fixed header so sections don't sit underneath it */
+  padding-top: var(--header-height, 72px);
 }
 
 /* Remove continuous glow animation */
@@ -170,6 +172,16 @@ nav ul {
   list-style: none;
   margin: 0;
 }
+/* Mobile menu toggle button (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
 nav ul li a {
   color: white;
   text-decoration: none;
@@ -186,15 +198,20 @@ nav ul li a:hover {
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
+/* Prevent anchored content from hiding under fixed header */
+:root {
+  --header-height: 72px; /* approximate header height */
+}
+html {
+  scroll-padding-top: var(--header-height);
+}
+
 /* Home Section */
 #home {
   margin-top: 60px;
 }
 
 /* About Section */
-#about {
-  /* Removing the background gradient */
-}
 
 #about .section-content {
   display: flex;
@@ -225,9 +242,6 @@ nav ul li a:hover {
 }
 
 /* Projects Section */
-#projects {
-  /* Removing the background gradient */
-}
 
 .project-grid {
   display: grid;
@@ -286,6 +300,34 @@ footer {
 @media (max-width: 768px) {
   .section-content {
     flex-direction: column;
+  }
+  /* Make background perform better on mobile */
+  body {
+    background-attachment: scroll;
+    border: 10px solid;
+  }
+
+  /* Hide nav links behind a toggle on small screens */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide the nav list by default on mobile; show when nav has .open */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    padding: 1rem;
+    gap: 0.5rem;
+    z-index: 999;
+  }
+
+  nav.open ul {
+    display: flex;
   }
   
   .section-content p {
